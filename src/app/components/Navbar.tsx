@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav
       className={`${styles.paddingX} w-full flex items-center py-5 fixed 
-      top-0 z-20 bg-black sm:opacity-[0.97] xxs:h-[12vh]`}>
+      top-0 z-20 sm:opacity-[0.97] xxs:h-[12vh]`} style={{backgroundImage: "linear-gradient(to right, #6300f3 , #23f9ff !important"}}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <a
           href="/"
@@ -33,8 +33,8 @@ const Navbar = () => {
             <li
               key={nav.id}
               className={`${
-                active === nav.title ? 'text-french' : 'text-eerieWhite'
-              } hover:text-taupe text-[21px] font-medium font-mova 
+                active === nav.title ? 'text-eerieWhite nav-links-active' : 'text-eerieWhite'
+              } text-[21px] font-medium font-mova 
                 uppercase tracking-[3px] cursor-pointer nav-links font-poppins`}
               onClick={() => setActive(nav.title)}>
               <a href={`#${nav.id}`}>{nav.title}</a>

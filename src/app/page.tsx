@@ -36,7 +36,7 @@ export default function Home() {
         <div
           className="bg-experienceLight bg-cover bg-center 
           bg-no-repeat rounded-tl-[150px] rounded-br-[130px]"
-          style={{background: `linear-gradient(135deg, rgba(244,244,246,0.5) 60%, rgba(10,10,10,0.2) 100%), url(${bgExp?.src})`}}>
+          style={{background: `linear-gradient(135deg, rgba(244,244,246,0.5) 75%, rgba(10,10,10,0.2) 100%), url(${bgExp?.src})`}}>
           <Experience />
         </div>
       </div>

@@ -44,7 +44,8 @@ const Hero = () => {
               <span
                 className="sm:text-battleGray sm:text-[90px] 
                 text-eerieBlack text-[50px] font-mova
-                font-extrabold uppercase font-poppins">
+                font-extrabold uppercase font-poppins"
+                style={{color: "#5659f6"}}>
                 ADI MURIANTO
               </span>
             </h1>
@@ -66,7 +67,8 @@ const Hero = () => {
             <div
               className="w-[35px] h-[64px] rounded-3xl border-4 
             border-french border-dim flex
-            justify-center items-start p-2">
+            justify-center items-start p-2"
+            style={{borderColor: "#00cddb"}}>
               <motion.div
                 animate={{
                   y: [0, 24, 0],
@@ -77,6 +79,7 @@ const Hero = () => {
                   repeatType: 'loop',
                 }}
                 className="w-3 h-3 rounded-full bg-taupe mb-1"
+                style={{background: "#bbe9ee"}}
               />
             </div>
           </a>

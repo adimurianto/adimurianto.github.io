@@ -46,6 +46,10 @@ import dcc from './company/dcc.png';
 import kelhel from './company/kelhel.png';
 import microverse from './company/microverse.png';
 
+import campina from './projects/campina.png';
+import pokedex from './projects/pokedex.png';
+import news from './projects/news.png';
+import aguninterior from './projects/aguninterior.png';
 import komikult from './projects/komikult.png';
 import leaderboard from './projects/leaderboard.png';
 import math from './projects/math-magicians.png';
@@ -102,4 +106,9 @@ export {
   dcc,
   kelhel,
   microverse,
+
+  campina,
+  pokedex,
+  news,
+  aguninterior,
 };

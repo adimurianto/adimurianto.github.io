@@ -48,7 +48,11 @@
 }
 
 .nav-links:hover::after {
-  width: 70%;
+  width: 80%;
+}
+
+.nav-links-active::after {
+  width: 80%;
 }
 
 #about {

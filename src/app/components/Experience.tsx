@@ -25,7 +25,7 @@ const ExperienceCard = ({ experience }: any) => (
       borderRight: '7px solid  #232631',
     }}
     date={experience.date}
-    iconStyle={{ background: experience.iconBg }}
+    iconStyle={{ background: '#5070f8' }}
     icon={
       <div className="flex justify-center items-center w-full h-full">
         <Image
@@ -54,10 +54,10 @@ const Experience = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
+        <p className={`${styles.sectionSubTextDark} sm:pl-16 pl-[2rem]`}>
           What I&apos;ve done so far
         </p>
-        <h2 className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem]`}>
+        <h2 className={`${styles.sectionHeadTextDark} sm:pl-16 pl-[2rem]`}>
           Work Experience.
         </h2>
       </motion.div>
@@ -80,7 +80,7 @@ const Experience = () => {
             contentArrowStyle={{
               borderRight: '7px solid  #232631',
             }}
-            iconStyle={{ background: '#333333' }}
+            iconStyle={{ background: '#5070f8' }}
             icon={
               <div className="flex justify-center items-center w-full h-full">
                 <Image
@@ -93,12 +93,12 @@ const Experience = () => {
           >
             <button
               className="live-demo flex justify-between 
-              sm:text-[18px] text-[14px] text-timberWolf 
+              sm:text-[18px] text-[14px] text-white 
               font-bold font-beckman items-center py-5 pl-3 pr-3 
-              whitespace-nowrap gap-1 sm:w-[148px] sm:h-[58px] 
-              w-[125px] h-[46px] rounded-[10px] bg-jetLight 
-              sm:mt-[22px] mt-[16px] hover:bg-battleGray 
-              hover:text-eerieBlack transition duration-[0.2s] 
+              whitespace-nowrap gap-1 sm:w-[170px] sm:h-[58px] 
+              w-[150px] h-[46px] rounded-[10px] bg-jetLight 
+              sm:mt-[22px] mt-[16px] hover:bg-button 
+              hover:text-white transition duration-[0.2s] 
               ease-in-out font-poppins"
               onClick={() =>
                 window.open(
@@ -123,6 +123,7 @@ const Experience = () => {
                 alt="download"
                 className="download-btn sm:w-[26px] sm:h-[26px] 
                 w-[23px] h-[23px] object-contain"
+                style={{filter: "brightness(0) invert(1)"}}
               />
             </button>
           </VerticalTimelineElement>
