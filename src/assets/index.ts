@@ -4,8 +4,6 @@ import whiteabstract from './backgrounds/white-abstract.png';
 import worldmap from './backgrounds/world-map.png';
 
 import logo from './logo/logo-black.png';
-import logotext from './logo/logo-text-black.png';
-
 import amcodes from './personal/amcodes.png';
 
 import backend from './icons/backend.png';
@@ -50,12 +48,6 @@ import campina from './projects/campina.png';
 import pokedex from './projects/pokedex.png';
 import news from './projects/news.png';
 import aguninterior from './projects/aguninterior.png';
-import komikult from './projects/komikult.png';
-import leaderboard from './projects/leaderboard.png';
-import math from './projects/math-magicians.png';
-import movie from './projects/movie-metro.png';
-import nyeusi from './projects/nyeusi.png';
-import space from './projects/space-hub.png';
 
 export {
   bwmap,
@@ -63,7 +55,6 @@ export {
   whiteabstract,
   worldmap,
   logo,
-  logotext,
   amcodes,
   backend,
   ux,
@@ -96,12 +87,6 @@ export {
   mysql,
   php,
   typescript,
-  komikult,
-  leaderboard,
-  math,
-  movie,
-  nyeusi,
-  space,
   coverhunt,
   dcc,
   kelhel,

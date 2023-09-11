@@ -6,8 +6,18 @@ import { styles } from '../../styles';
 import { navLinks } from '../../constants';
 import { amcodes, bwmap, worldmap } from '../../assets';
 import Image from 'next/image';
+import { useEffect } from 'react';
+import { gsap } from 'gsap';
 
 const Hero = () => {
+  useEffect(() => {
+    gsap.from(".img-personal", {width: 0, height: 0, duration: 3});
+
+    gsap.from("h1.personal-name", {duration: 3, opacity: 0, scaleX: 1.1, ease: "bounce"});
+
+    gsap.from(".description-personal", {duration: 3, x: -100, ease:"circ"});
+  }, [])
+
   return (
     <>
       <div className="absolute top-0 left-0 z-0 h-[100vh] w-screen">
@@ -39,7 +49,7 @@ const Hero = () => {
 
           <div>
             <h1
-              className={`${styles.heroHeadText} text-eerieBlack font-poppins uppercase`}>
+              className={`${styles.heroHeadText} personal-name text-eerieBlack font-poppins uppercase`}>
               Hi, I&apos;m{' '}
               <span
                 className="sm:text-battleGray sm:text-[90px] 
@@ -49,7 +59,7 @@ const Hero = () => {
                 ADI MURIANTO
               </span>
             </h1>
-            <p className={`${styles.heroSubText} mt-2 text-eerieBlack font-poppins`}>
+            <p className={`${styles.heroSubText} description-personal mt-2 text-eerieBlack font-poppins`}>
               Web Developer with {new Date().getFullYear() - new Date('2018-03-01').getFullYear()} years experience.
             </p>
           </div>
@@ -90,7 +100,7 @@ const Hero = () => {
           <Image
             className="absolute bottom-0 ml-[50vw] 
             lg:ml-[75vw] md:ml-[60vw] xmd:ml-[60vw] 2xl:ml-[83vw]
-            sm:h-[90vh] md:h-[70vh] xl:h-[80vh] w-auto"
+            sm:h-[90vh] md:h-[70vh] xl:h-[80vh] w-auto img-personal"
             src={amcodes}
             alt="amcodes"
           />

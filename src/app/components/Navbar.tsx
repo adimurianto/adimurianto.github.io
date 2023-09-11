@@ -1,14 +1,19 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { styles } from '../../styles';
 import { navLinks } from '../../constants';
 import { close, menu, logo } from '../../assets';
 import Image from 'next/image';
+import { gsap } from 'gsap';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    gsap.from(".logo-amcodes", {width:0, height:0, duration: 3, ease: "bounce.out",});
+  }, [])
 
   return (
     <nav
@@ -25,7 +30,7 @@ const Navbar = () => {
           <Image
             src={logo} // your logo comes here
             alt="logo"
-            className="sm:w-[auto] sm:h-[50px] w-[auto] h-[45px] object-contain"
+            className="sm:w-[auto] sm:h-[50px] w-[auto] h-[45px] object-contain logo-amcodes"
           />
         </a>
         <ul className="list-none hidden sm:flex flex-row gap-14 mt-2">
