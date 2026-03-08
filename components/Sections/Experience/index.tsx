@@ -19,8 +19,8 @@ const DetailSection = () => (
       Since 2018, had a privilege to work with several companies that enables me
       to hone my skills and talents. These companies will always have a special
       place in my heart. Currently I am working with{' '}
-      <Link href="https://www.tsgitdev.com/" target="_blank" rel="noreferrer">
-        PT. Tristar Surya Gemilang
+      <Link href="">
+        CV. Jadi Teknologi Utama
       </Link>
       .
     </Text>

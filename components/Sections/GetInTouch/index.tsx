@@ -56,7 +56,7 @@ const GetInTouch = () => {
         as my human interaction battery lasts. Coding, work, sports, anything is cool. So feel free to message me on any of my social
         media or shoot me an{' '}
         <Link
-          href="mailto:murianto013@gmail.com"
+          href="mailto:adimurianto.dev@gmail.com"
           target="_blank"
           rel="noreferrer"
         >

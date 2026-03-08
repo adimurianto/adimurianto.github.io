@@ -109,7 +109,7 @@ const Sidebar = () => {
               width="120px"
               variants={letterSpace}
               as={'a'}
-              href="mailto:murianto013@gmail.com"
+              href="mailto:adimurianto.dev@gmail.com"
               target="_blank"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

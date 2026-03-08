@@ -7,19 +7,15 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
-import Script from 'next/script'
 import OpenGraphHead from 'components/Misc/OpenGraphHead'
 import FadeInLayout from 'components/Layout/FadeWhenVisible'
 import Menu from 'components/Menu'
 import Sidebar from 'components/Sidebar'
-import Avatar from 'components/Avatar'
 import About from 'components/Sections/About'
+import { GitHubHeatmap } from 'github-heatmap-widget';
 import Experience from 'components/Sections/Experience'
-import FeaturedWorks from 'components/Sections/FeaturedWorks'
 import ScrollMore from 'components/Misc/ScrollMore'
-import { Article } from 'types/article'
 // These are on bottom sections so no need to render it instantly
-const DevToArticles = dynamic(() => import('components/Sections/DevToArticles'))
 const GetInTouch = dynamic(() => import('components/Sections/GetInTouch'))
 
 const Portfolio = (): JSX.Element => {
@@ -72,11 +68,10 @@ const Portfolio = (): JSX.Element => {
               <Box
                 id="aboutMe"
                 className="contentRow"
-                minH={{ lg: '100vh' }}
+                minH={{ lg: '70vh' }}
                 display="flex"
                 alignItems="center"
                 paddingTop={{ base: 0, lg: 20, xl: 0 }}
-                paddingBottom={{ base: 12, lg: 0 }}
                 flexDirection={{
                   base: 'column-reverse',
                   lg: 'row',
@@ -87,9 +82,42 @@ const Portfolio = (): JSX.Element => {
             </FadeInLayout>
             <FadeInLayout>
               <Box
-                id="jobs"
+                id="devInfo" 
                 className="contentRow"
                 paddingTop={{ base: 0, lg: 20, xl: 0 }}
+                paddingBottom={{ base: 12, lg: 20 }}
+                paddingX={0}
+              >
+                <Box
+                  display="grid"
+                  gridTemplateColumns={{ base: "1fr", md: "3fr 2fr" }}
+                  gap={20}
+                  width="75%"
+                  alignItems="center"
+                  justifyItems="stretch"
+                >
+                  <Box>
+                    <img 
+                      src="https://github-readme-stats-fast.vercel.app/api/streak?username=adimurianto&theme=radical" 
+                      alt="GitHub Streak"
+                      style={{ width: '100%', height: 'auto', padding: '5px' }}
+                    />
+                  </Box>
+                  <Box>
+                    <img 
+                      src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=adimurianto&layout=compact&theme=radical" 
+                      alt="Most Used Languages"
+                      style={{ width: '100%', height: 'auto', padding: '5px' }}
+                    />
+                  </Box>
+                </Box>
+              </Box>
+            </FadeInLayout>
+            <FadeInLayout>
+              <Box
+                id="jobs"
+                className="contentRow"
+                paddingTop={{ base: 0, lg: 20, xl: 10 }}
                 paddingBottom={{ base: 12, lg: 10 }}
                 paddingX={0}
                 flexDirection={'row'}
@@ -97,30 +125,6 @@ const Portfolio = (): JSX.Element => {
                 <Experience />
               </Box>
             </FadeInLayout>
-            {/* <FadeInLayout>
-              <Box
-                id="works"
-                className="contentRow"
-                paddingTop={{ base: 0, lg: 20, xl: 20 }}
-                paddingBottom={{ base: 12, lg: 10 }}
-                paddingX={0}
-                flexDirection={'row'}
-              >
-                <FeaturedWorks />
-              </Box>
-            </FadeInLayout> */}
-            {/* <FadeInLayout>
-              <Box
-                id="blog"
-                className="contentRow"
-                paddingTop={{ base: 0, lg: 20, xl: 20 }}
-                paddingBottom={{ base: 12, lg: 10 }}
-                paddingX={0}
-                flexDirection={'row'}
-              >
-                <DevToArticles articles={articles} />
-              </Box>
-            </FadeInLayout> */}
             <FadeInLayout>
               <Box
                 id="contact"
@@ -139,15 +143,5 @@ const Portfolio = (): JSX.Element => {
     </>
   )
 }
-
-// export async function getStaticProps() {
-//   const res = await fetch('https://dev.to/api/articles?username=klawingco')
-//   const articles = await res.json()
-//   return {
-//     props: {
-//       articles,
-//     },
-//   }
-// }
 
 export default Portfolio
