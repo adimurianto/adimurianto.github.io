@@ -1,6 +1,6 @@
 import { Link } from '@chakra-ui/react'
 
-export type Company = 'TSG' | 'Aptavis'
+export type Company = 'JTU' | 'TSG' | 'Aptavis'
 
 export type CompanyDetail = {
   name: string
@@ -19,13 +19,30 @@ export type CompanyDetail = {
 export const Experiences: {
   [key in Company]: CompanyDetail
 } = {
+  JTU: {
+    name: 'CV. Jadi Teknologi Utama',
+    longName: '',
+    subDetail: '',
+    url: 'https://www.jaditeknologiutama.com/',
+    position: 'Full Stack Web Developer',
+    duration: 'Apr 2025 - Present',
+    logo: {
+      light: '/worked_at_logos/JTU_logo.png',
+      dark: '/worked_at_logos/JTU_logo.png',
+    },
+    roles: [
+      <>
+       Developed Ixitask Management System Indohose
+      </>,
+    ],
+  },
   TSG: {
     name: 'PT. Tristar Surya Gemilang',
     longName: '',
     subDetail: '',
     url: 'https://www.tsgitdev.com/',
     position: 'Full Stack Developer',
-    duration: 'Mar 2023 - Present',
+    duration: 'Mar 2023 - Apr 2025',
     logo: {
       light: '/worked_at_logos/TSG_logo.png',
       dark: '/worked_at_logos/TSG_logo.png',
@@ -44,7 +61,7 @@ export const Experiences: {
     longName: '',
     subDetail: '',
     url: 'https://aptavis.net/',
-    position: 'Web Developer',
+    position: 'Full Stack Web Developer',
     duration: 'May 2018 - Feb 2023',
     logo: {
       light: '/worked_at_logos/Aptavis_logo.png',
@@ -74,6 +91,7 @@ export const Experiences: {
 }
 
 export const ExperiencesList = [
+  Experiences.JTU,
   Experiences.TSG,
   Experiences.Aptavis,
 ]
