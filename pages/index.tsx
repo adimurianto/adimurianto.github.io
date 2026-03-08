@@ -12,7 +12,6 @@ import FadeInLayout from 'components/Layout/FadeWhenVisible'
 import Menu from 'components/Menu'
 import Sidebar from 'components/Sidebar'
 import About from 'components/Sections/About'
-import { GitHubHeatmap } from 'github-heatmap-widget';
 import Experience from 'components/Sections/Experience'
 import ScrollMore from 'components/Misc/ScrollMore'
 // These are on bottom sections so no need to render it instantly
