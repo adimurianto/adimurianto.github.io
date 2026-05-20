@@ -1,10 +1,284 @@
-.skillModal::-webkit-scrollbar{
- width: 0.5em;
+/* About Section Styles */
+.skillModal::-webkit-scrollbar {
+  width: 0.5em;
 }
-.skillModal::-webkit-scrollbar-track-piece{
+
+.skillModal::-webkit-scrollbar-track-piece {
   width: 10px;
 }
-.skillModal::-webkit-scrollbar-thumb{
+
+.skillModal::-webkit-scrollbar-thumb {
   background: var(--chakra-colors-gray-600);
   border-radius: 1em;
+}
+
+/* About Section */
+.aboutSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #0a0a0f 0%, #121218 100%);
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.aboutBackground {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Glow Orbs */
+.aboutGlow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+
+.aboutGlow1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #23f9fe, #7B2FFF);
+  left: -100px;
+  top: 20%;
+}
+
+.aboutGlow2 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #7B2FFF, #23f9fe);
+  right: -50px;
+  bottom: 20%;
+}
+
+/* Grid Lines */
+.aboutGrid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(35, 249, 254, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(35, 249, 254, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Container */
+.aboutContainer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 16px;
+}
+
+@media (min-width: 768px) {
+  .aboutContainer {
+    padding: 80px 24px;
+  }
+}
+
+/* Section Label */
+.sectionLabel {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: #23f9fe;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(35, 249, 254, 0.08);
+  border: 1px solid rgba(35, 249, 254, 0.2);
+  border-radius: 4px;
+}
+
+/* Section Title */
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle span {
+  background: linear-gradient(90deg, #23f9fe 0%, #00d4ff 50%, #7B2FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Description */
+.aboutDescription {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #8a8a9a;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.aboutDescription strong {
+  color: #23f9fe;
+  font-weight: 600;
+}
+
+/* Tech Stack Card */
+.techCard {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(35, 249, 254, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .techCard {
+    padding: 40px;
+  }
+}
+
+.techCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(35, 249, 254, 0.3), transparent);
+}
+
+.techCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(35, 249, 254, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Tech Grid */
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .techGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Tech Item */
+.techItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.techItem:hover {
+  background: rgba(35, 249, 254, 0.05);
+  transform: translateX(4px);
+}
+
+.techIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  color: #23f9fe;
+  font-size: 1.5em;
+}
+
+.techName {
+  font-size: 0.95rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.techDetail {
+  font-size: 0.8rem;
+  color: #8a8a9a;
+  margin-left: auto;
+}
+
+/* View More Link */
+.viewMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  font-size: 0.95rem;
+  color: #23f9fe;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+.viewMoreLink:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 0 20px rgba(35, 249, 254, 0.5);
+}
+
+.viewMoreLink svg {
+  transition: transform 0.3s ease;
+}
+
+.viewMoreLink:hover svg {
+  transform: translateX(4px);
+}
+
+/* Decorative corner elements */
+.aboutCorner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
+}
+
+.aboutCornerTopRight {
+  top: 0;
+  right: 0;
+  border-top: 1px solid rgba(35, 249, 254, 0.1);
+  border-right: 1px solid rgba(35, 249, 254, 0.1);
+}
+
+.aboutCornerBottomLeft {
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid rgba(35, 249, 254, 0.1);
+  border-left: 1px solid rgba(35, 249, 254, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .techCard {
+    padding: 24px;
+  }
+
+  .techItem {
+    padding: 10px 12px;
+  }
 }

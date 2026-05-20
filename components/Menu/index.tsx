@@ -1,69 +1,119 @@
-import { useEffect } from 'react'
+'use client'
+
+import { useState, useEffect, useRef } from 'react'
 import {
+  Box,
   Container,
-  useColorModeValue,
-  useBreakpointValue,
+  Flex,
+  Link,
 } from '@chakra-ui/react'
-import { motion, Variants, useAnimation } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../Logo'
 import styles from './styles.module.css'
-import Navigation from './Navigation'
-import { mobileBreakpointsMap } from 'config/theme'
-import useScrollDirection, { ScrollDirection } from 'hooks/useScrollDirection'
 
-const mobileMenuVariants: Variants = {
-  hidden: {
-    opacity: [1, 0.85, 0],
-    y: -80,
-    transition: {
-      ease: 'easeInOut',
-      duration: 0.35,
-    },
-  },
-  show: {
-    opacity: [0, 0.85, 1],
-    y: 0,
-    transition: {
-      ease: 'easeInOut',
-      duration: 0.28,
-    },
+const navItems = [
+  { label: 'About', href: '#aboutMe' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#jobs' },
+  { label: 'Contact', href: '#contact' },
+]
+
+const stagger = {
+  animate: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
 }
 
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+}
+
 const Menu = () => {
-  const bg = useColorModeValue('gray.100', 'black')
-  const controls = useAnimation()
-  const isMobile = useBreakpointValue(mobileBreakpointsMap)
-  const scrollDirection = useScrollDirection(true, isMobile)
+  const [isOpen, setIsOpen] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const lastScroll = useRef(0)
+
   useEffect(() => {
-    if (scrollDirection === ScrollDirection.Down && isMobile) {
-      controls.start('hidden')
-    } else {
-      controls.start('show')
+    const onScroll = () => {
+      const current = window.scrollY
+      if (current > 100 && current > lastScroll.current) {
+        setHidden(true)
+      } else {
+        setHidden(false)
+      }
+      lastScroll.current = current
     }
-  }, [isMobile, controls, scrollDirection])
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <motion.div
-      initial={isMobile ? 'hidden' : false}
-      variants={mobileMenuVariants}
-      animate={controls}
-      className={isMobile ? styles.mobileMenuContainer : ''}
-    >
-      <Container
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        padding={{ base: 5, lg: 0 }}
-        paddingY={{ base: 5, lg: 0 }}
-        backgroundColor={isMobile ? bg : 'transparent'}
-        width="100vw"
-        maxWidth="100vw"
-        margin={0}
+    <>
+      <Box
+        as="header"
+        className={`${styles.header} ${hidden ? styles.headerHidden : ''}`}
       >
-        <Logo />
-        <Navigation />
-      </Container>
-    </motion.div>
+        <Container maxW="container.xl" className={styles.container}>
+          <Flex align="center" justify="space-between" width="100%">
+            <Logo />
+
+            <Box display="flex" alignItems="center" gap={{ base: 2, md: 4 }}>
+              <Box className={styles.navLinks}>
+                {navItems.map((item) => (
+                  <Link key={item.label} href={item.href} className={styles.navItem}>
+                    {item.label}
+                  </Link>
+                ))}
+              </Box>
+
+              <Box className={styles.actions}>
+                <button
+                  className={`${styles.hamburger} ${isOpen ? styles.hamburgerOpen : ''}`}
+                  onClick={() => setIsOpen(!isOpen)}
+                  aria-label="Toggle menu"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </button>
+              </Box>
+            </Box>
+          </Flex>
+        </Container>
+      </Box>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className={styles.overlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.nav
+              className={styles.mobileNav}
+              variants={stagger}
+              initial="initial"
+              animate="animate"
+            >
+              {navItems.map((item) => (
+                <motion.div key={item.label} variants={fadeUp}>
+                  <Link
+                    href={item.href}
+                    className={styles.mobileNavItem}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 

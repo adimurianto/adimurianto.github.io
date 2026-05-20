@@ -2,119 +2,105 @@ import { memo } from 'react'
 import {
   Heading,
   Text,
-  List,
-  ListItem,
-  ListIcon,
-  Icon,
   SimpleGrid,
   Box,
-  Tooltip,
-  Stack,
-  useColorModeValue,
 } from '@chakra-ui/react'
 import {
-  SiDotNet,
+  SiGo,
   SiJavascript,
   SiTypescript,
-  SiGraphql,
   SiReact,
   SiNextDotJs,
   SiNodeDotJs,
-  SiDocker,
-  SiGo,
   SiPhp,
-  SiMysql,
   SiPostgresql,
   SiFlutter,
+  SiMongodb,
+  SiMysql,
 } from 'react-icons/si'
-import { GiCoffeePot } from 'react-icons/gi'
 import { IoMdOpen } from 'react-icons/io'
+import styles from './styles.module.css'
 
 type ISkillSetModal = {
   onOpen(): void
 }
 
 const Detail = ({ onOpen }: ISkillSetModal) => {
-  const emphasis = useColorModeValue('purple.600', 'cyan.300')
   const currentYear = new Date().getFullYear()
   const professionalYears = currentYear - 2018
 
+  const techStack = [
+    { icon: SiGo, name: 'Go', detail: 'Gin, Gorm' },
+    { icon: SiJavascript, name: 'JavaScript', detail: 'ES6+' },
+    { icon: SiTypescript, name: 'TypeScript', detail: '' },
+    { icon: SiPhp, name: 'PHP', detail: 'Laravel' },
+    { icon: SiPostgresql, name: 'PostgreSQL', detail: '' },
+    { icon: SiMysql, name: 'MySQL', detail: '' },
+    { icon: SiMongodb, name: 'MongoDB', detail: '' },
+    { icon: SiReact, name: 'React', detail: '' },
+    { icon: SiNextDotJs, name: 'Next.js', detail: '' },
+    { icon: SiFlutter, name: 'Flutter', detail: '' },
+  ]
+
   return (
-    <Stack
-      width={{ base: '100%', lg: '70%' }}
-      spacing={{ base: 6, xl: 8 }}
-      as="section"
-    >
-      <Heading
-        as="h4"
-        size="2xl"
-        letterSpacing={1.8}
-        style={{
-          fontVariantCaps: 'small-caps',
-        }}
-      >
-        What i do.
-      </Heading>
-      <Text variant="description">
-        I`ve been coding professionally for {professionalYears} years now and
-        currently working as a <b>Full Stack Developer</b> that focuses on{' '}
-        <b>database</b>, <b>APIs</b>,{' '}
-        and even <b>front end integration</b> stuff now, how time flies!
-        <br /> <br />
-        Here are few tech stack that i use :
-      </Text>
+    <Box className={styles.aboutSection}>
+      <Box className={styles.aboutBackground}>
+        <Box className={`${styles.aboutGlow} ${styles.aboutGlow1}`} />
+        <Box className={`${styles.aboutGlow} ${styles.aboutGlow2}`} />
+        <Box className={styles.aboutGrid} />
+      </Box>
 
-      <SimpleGrid columns={2} spacing={4}>
-        <List spacing={3}>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiGo} color={emphasis} fontSize="2em" />
-            Go - Gin, Gorm
-          </ListItem>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiJavascript} color={emphasis} fontSize="2em" />
-            Javascript (ES6+)
-          </ListItem>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiTypescript} color={emphasis} fontSize="2em" />
-            Typescript
-          </ListItem>
-
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiPhp} color={emphasis} fontSize="2em" />
-            PHP - Laravel, Codeigniter
-          </ListItem>
-        </List>
-        <List spacing={3}>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiPostgresql} color={emphasis} fontSize="2em" />
-            PostgreSQL, MySQL, MongoDB
-          </ListItem>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiReact} color={emphasis} fontSize="2em" />
-            React
-          </ListItem>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiNextDotJs} color={emphasis} fontSize="2em" />
-            NextJS
-          </ListItem>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiFlutter} color={emphasis} fontSize="2em" />
-            Flutter
-          </ListItem>
-        </List>
-        <Box>
-          <Text
-            as="button"
-            variant="emphasis"
-            fontSize="smaller"
-            textAlign="left"
-            onClick={onOpen}
+      <Box className={styles.aboutContainer}>
+        <Box textAlign="center" mb={8}>
+          <span className={styles.sectionLabel}>About Me</span><br/><br/>
+          <Heading
+            as="h4"
+            className={styles.sectionTitle}
+            fontSize={{ base: '2xl', md: '3xl' }}
+            fontWeight="bold"
+            letterSpacing="0.05em"
           >
-            See my full tech stack <Icon as={IoMdOpen} />
-          </Text>
+            <span>What I Do</span>
+          </Heading>
         </Box>
-      </SimpleGrid>
-    </Stack>
+
+        <Text
+          className={styles.aboutDescription}
+          fontSize={{ base: 'md', md: 'lg' }}
+          textAlign="center"
+        >
+          I've been coding professionally for <strong>{professionalYears} years</strong> and
+          currently working as a <strong>Full Stack Developer</strong> focusing on{' '}
+          <strong>database</strong>, <strong>APIs</strong>, and <strong>front-end integration</strong>.
+        </Text>
+
+        <Box className={styles.techCard}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+            {techStack.map((tech, index) => (
+              <Box key={index} className={styles.techItem}>
+                <Box className={styles.techIcon}>
+                  <tech.icon size={20} />
+                </Box>
+                <Text className={styles.techName}>{tech.name}</Text>
+                {tech.detail && (
+                  <Text className={styles.techDetail}>{tech.detail}</Text>
+                )}
+              </Box>
+            ))}
+          </SimpleGrid>
+        </Box>
+
+        <Box textAlign="center">
+          <button className={styles.viewMoreLink} onClick={onOpen}>
+            See my full tech stack
+            <IoMdOpen style={{ display: 'inline', marginLeft: '4px' }} />
+          </button>
+        </Box>
+      </Box>
+
+      <Box className={`${styles.aboutCorner} ${styles.aboutCornerTopRight}`} />
+      <Box className={`${styles.aboutCorner} ${styles.aboutCornerBottomLeft}`} />
+    </Box>
   )
 }
 

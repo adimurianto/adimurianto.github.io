@@ -1,6 +1,6 @@
 import { Link } from '@chakra-ui/react'
 
-export type Company = 'JTU' | 'TSG' | 'Aptavis'
+export type Company = 'JTU' | 'TSG' | 'Freelance' | 'Aptavis'
 
 export type CompanyDetail = {
   name: string
@@ -19,20 +19,53 @@ export type CompanyDetail = {
 export const Experiences: {
   [key in Company]: CompanyDetail
 } = {
+  Freelance: {
+    name: 'Self-employed',
+    longName: '',
+    subDetail: '',
+    url: '',
+    position: 'Freelance Full Stack Developer',
+    duration: 'Mar 2018 - Present',
+    logo: {
+      light: '',
+    },
+    roles: [
+      <>
+        Delivered multiple web-based systems (e-point, inventory, and others) using Golang, Next.js, CodeIgniter, Laravel, jQuery, MySQL, and PostgreSQL
+      </>,
+      <>
+        Developed E-K2PC mobile application for Puskesmas Cirinten using Flutter with SQLite for efficient local data handling
+      </>,
+      <>
+        Built and customized company profile websites using Webflow for international clients
+      </>,
+      <>
+        Managed end-to-end development lifecycle, ensuring scalable, reliable, and user-friendly solutions
+      </>,
+    ],
+  },
   JTU: {
     name: 'CV. Jadi Teknologi Utama',
     longName: '',
     subDetail: '',
-    url: 'https://www.jaditeknologiutama.com/',
+    url: '',
     position: 'Full Stack Web Developer',
-    duration: 'Apr 2025 - Present',
+    duration: 'Apr 2025 - Mar 2026',
     logo: {
-      light: '/worked_at_logos/JTU_logo.png',
-      dark: '/worked_at_logos/JTU_logo.png',
+      light: '',
     },
     roles: [
       <>
-       Developed Ixitask Management System Indohose
+        Developed and maintained Ixitask Management System, a web-based task management application to streamline internal business processes
+      </>,
+      <>
+        Built backend features using CodeIgniter 3 with MySQL for data management and business logic
+      </>,
+      <>
+        Developed interactive user interfaces using Bootstrap and jQuery to enhance usability and responsiveness
+      </>,
+      <>
+        Performed bug fixing, feature enhancements, and system optimization for better performance and stability
       </>,
     ],
   },
@@ -49,10 +82,16 @@ export const Experiences: {
     },
     roles: [
       <>
-       Rebuild Loan Management System Bank BJB
+        Developed SISAPPRA (Sistem Informasi Satpol PP DKI Jakarta) using microservices architecture with Go (Gin, GORM), PostgreSQL, MongoDB, and Redis, improving system scalability
       </>,
       <>
-       Build Sistem Informasi Satuan Polisi Pamong Praja DKI Jakarta
+        Rebuilt Loan Management System for Bank BJB into a scalable Next.js-based application with component-based design (Mantine UI)
+      </>,
+      <>
+        Implemented secure REST APIs using JWT authentication and Swagger documentation
+      </>,
+      <>
+        Built modern frontend applications using Next.js, Redux, and React Query to enhance user experience
       </>,
     ],
   },
@@ -69,28 +108,26 @@ export const Experiences: {
     },
     roles: [
       <>
-        Create and design web-based applications (Icecreamstore, Ticketing, Kiosk, VOIP/Aptacare, etc.)
+        Developed and maintained web-based applications (Icecreamstore, Ticketing, Digital Signage, VOIP) using CodeIgniter 3, MySQL, PostgreSQL, GraphQL, MongoDB, jQuery, and Bootstrap
       </>,
       <>
-        Create and develop applications for Tizen OS and Web OS (Aptavis & Aptacom)
+        Built and supported IPTV applications on Tizen OS and WebOS (Aptavis & Aptacom), maintaining stability across smart device platforms
       </>,
       <>
-        Manage applications that are already running on the client
+        Designed and integrated REST APIs, WebSocket, and Webhooks for real-time communication and seamless system integration
       </>,
       <>
-        Create and use APIs for system integration
+        Managed production deployments and live system troubleshooting, ensuring high availability
       </>,
       <>
-        Update engine production to client server
-      </>,
-      <>
-        Merge source code project team
+        Collaborated with cross-functional teams to maintain code quality and smooth release cycles
       </>,
     ],
   },
 }
 
 export const ExperiencesList = [
+  Experiences.Freelance,
   Experiences.JTU,
   Experiences.TSG,
   Experiences.Aptavis,
