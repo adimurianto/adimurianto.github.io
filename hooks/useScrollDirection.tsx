@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export enum ScrollDirection {
   Initial,
@@ -15,13 +15,20 @@ const useScrollDirection = (
 ) => {
   const [scrollDir, setScrollDir] = useState(ScrollDirection.Initial)
   const [isInitialized, setIsInitialized] = useState(false)
+  const avatarScrollYRef = useRef<number>(0)
 
   useEffect(() => {
+    // Skip during SSR
+    if (typeof document === 'undefined') return
+
     const avatarContainer = document.querySelector('#klAvatar') as HTMLElement
-    const avatarScrollY =
-      avatarContainer?.offsetTop +
-      avatarContainer.clientHeight -
-      AVATAR_PADD_OFFSET
+
+    // If avatar container doesn't exist, use default threshold
+    // Default to 0, meaning always "below avatar"
+    avatarScrollYRef.current = avatarContainer
+      ? avatarContainer.offsetTop + avatarContainer.clientHeight - AVATAR_PADD_OFFSET
+      : 0
+
     const threshold = 10
     let lastScrollY = window.scrollY || 0
 
@@ -34,7 +41,7 @@ const useScrollDirection = (
         return
       }
       const isBelowAvatar =
-        !isMobileOnly && belowAvatar ? scrollY > avatarScrollY : true
+        !isMobileOnly && belowAvatar ? scrollY > avatarScrollYRef.current : true
       let currentScrollDirection = ScrollDirection.Initial
 
       // Used to tell if menu will show or not
@@ -67,7 +74,7 @@ const useScrollDirection = (
     }
 
     // Fallback for initial load
-    if (!isMobile && !isInitialized && lastScrollY > avatarScrollY) {
+    if (!isMobile && !isInitialized && lastScrollY > avatarScrollYRef.current) {
       setScrollDir(ScrollDirection.Down)
       setIsInitialized(true)
     }
@@ -76,6 +83,7 @@ const useScrollDirection = (
       window?.removeEventListener('scroll', onScroll)
     }
   }, [scrollDir, isMobileOnly, isMobile, isInitialized, belowAvatar])
+
   return scrollDir
 }
 

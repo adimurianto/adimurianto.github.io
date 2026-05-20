@@ -17,7 +17,7 @@ const Logo = () => {
         {colorMode === ThemeMode.Dark ? (
           <MotionImage
             className={!isMobile ? styles.logo : ''}
-            boxSize={isMobile ? '40px' : '80px'}
+            boxSize={isMobile ? '40px' : '50px'}
             objectFit="cover"
             src="./logo.png"
             alt="AM Codes Logo"
@@ -31,7 +31,7 @@ const Logo = () => {
         ) : (
           <MotionImage
             className={!isMobile ? styles.logo : ''}
-            boxSize={isMobile ? '40px' : '80px'}
+            boxSize={isMobile ? '40px' : '50px'}
             objectFit="cover"
             src="./logo.png"
             fallbackSrc="./logo.png"

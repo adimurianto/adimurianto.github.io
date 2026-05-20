@@ -1,40 +1,210 @@
-
-
-.menu{
+/* Header */
+.header {
   position: fixed;
-  top:0;
-  right: 3.5%;
-  z-index: 1;
-}
-.mobileMenuContainer{
-  position: fixed;
-  z-index: 1;
   top: 0;
-  height: 68px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(35, 249, 254, 0.1);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.headerHidden {
+  transform: translateY(-100%);
+}
+
+.container {
+  padding: 16px 24px !important;
+}
+
+.container > div {
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  justify-items: flex-end;
 }
 
-.blogBtn{
-  color: inherit;
-  text-decoration: underline 0.15em rgba(255, 255, 255, 0);
-  border-bottom: 1px solid transparent;
-  border-right: 1px solid transparent;
-  transition: text-decoration-color 300ms !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
+/* Desktop Navigation Links */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
-.blogBtn:hover,
-.blogBtn:focus,
-.blogBtn:active {
-  text-decoration-color: #23f9fe;
-  background-color: transparent;
+@media (max-width: 1024px) {
+  .navLinks {
+    gap: 16px;
+  }
 }
 
-.blogBtn.dark:hover,
-.blogBtn.dark:focus,
-.blogBtn.dark:active {
-  text-decoration-color: #121212;
+.navItem {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.875rem;
+  color: #8a8a9a;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navItem::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #23f9fe, #7B2FFF);
+  transition: width 0.3s ease;
+}
+
+.navItem:hover {
+  color: #23f9fe;
+  text-shadow: 0 0 20px rgba(35, 249, 254, 0.5);
+}
+
+.navItem:hover::after {
+  width: 100%;
+}
+
+/* Actions row */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Color Mode Toggle */
+.colorToggle {
+  color: #8a8a9a !important;
+  background: transparent !important;
+  border: 1px solid rgba(35, 249, 254, 0.2);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+.colorToggle:hover {
+  color: #23f9fe !important;
+  border-color: #23f9fe;
+  box-shadow: 0 0 15px rgba(35, 249, 254, 0.3);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(35, 249, 254, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #8a8a9a;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+  border-color: #23f9fe;
+}
+
+.hamburger:hover span {
+  background: #23f9fe;
+}
+
+.hamburgerOpen span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburgerOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10, 10, 15, 0.97);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.mobileNavItem {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+}
+
+.mobileNavItem::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #23f9fe, #7B2FFF);
+  transition: width 0.3s ease;
+}
+
+.mobileNavItem:hover {
+  color: #23f9fe;
+}
+
+.mobileNavItem:hover::after {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .header {
+    background: rgba(10, 10, 15, 0.95);
+  }
+
+  .container {
+    padding: 12px 16px !important;
+  }
 }

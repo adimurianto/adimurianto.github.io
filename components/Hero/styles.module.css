@@ -1,0 +1,560 @@
+/* Hero Section Styles */
+
+/* Cursor Animation */
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Background Effects */
+.backgroundEffects {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Grid Lines */
+.gridLines {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gridLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(35, 249, 254, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+/* Hero Content */
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Text + Avatar flex container */
+.heroInner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
+/* Text Container */
+.textContainer {
+  max-width: 800px;
+  flex: 1;
+}
+
+/* Avatar */
+.avatarWrapper {
+  flex-shrink: 0;
+  animation: avatarFloat 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes avatarFloat {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-16px); }
+}
+
+.avatarFrame {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(35, 249, 254, 0.3);
+  animation: borderPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes borderPulse {
+  from { box-shadow: 0 0 20px rgba(35, 249, 254, 0.2); }
+  to { box-shadow: 0 0 50px rgba(35, 249, 254, 0.5); }
+}
+
+.avatarGlow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(35, 249, 254, 0.15), rgba(123, 47, 255, 0.15));
+  filter: blur(20px);
+  animation: glowPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from { opacity: 0.4; transform: scale(1); }
+  to { opacity: 0.8; transform: scale(1.15); }
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Flying glow beam below avatar */
+.avatarBeam {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(35, 249, 254, 0.2) 0%, rgba(35, 249, 254, 0) 100%);
+  border-radius: 50%;
+  filter: blur(20px);
+  z-index: 0;
+  animation: beamPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes beamPulse {
+  from { opacity: 0.4; transform: translateX(-50%) scaleX(1); }
+  to { opacity: 0.8; transform: translateX(-50%) scaleX(1.3); }
+}
+
+/* Floating shadow */
+.avatarShadow {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(35, 249, 254, 0.15) 0%, rgba(35, 249, 254, 0) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: shadowPulse 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes shadowPulse {
+  from { opacity: 0.4; transform: translateX(-50%) scale(1); }
+  to { opacity: 0.8; transform: translateX(-50%) scale(1.4); }
+}
+
+/* Greeting */
+.greeting {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Name Styles */
+.name {
+  margin-bottom: 0;
+}
+
+.nameFirst {
+  display: inline-block;
+  color: #ffffff;
+  text-shadow: 0 0 40px rgba(35, 249, 254, 0.3);
+}
+
+.nameLast {
+  display: inline-block;
+  background: linear-gradient(90deg, #23f9fe 0%, #00d4ff 50%, #7B2FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 0 30px rgba(35, 249, 254, 0.4));
+}
+
+/* Role Container */
+.roleContainer {
+  position: relative;
+}
+
+.roleTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: rgba(35, 249, 254, 0.08);
+  border: 1px solid rgba(35, 249, 254, 0.2);
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.roleTag::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(35, 249, 254, 0.1), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.roleDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #23f9fe;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(35, 249, 254, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(35, 249, 254, 0);
+  }
+}
+
+/* Bio */
+.bio {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* CTA Container */
+.ctaContainer {
+  margin-top: 8px;
+}
+
+/* CTA Primary Button */
+.ctaPrimary {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #23f9fe 0%, #00d4ff 100%);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ctaPrimary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #00d4ff 0%, #23f9fe 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ctaPrimary:hover::before {
+  opacity: 1;
+}
+
+.ctaPrimary a {
+  position: relative;
+  z-index: 1;
+}
+
+.ctaArrow {
+  transition: transform 0.3s ease;
+}
+
+.ctaPrimary:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+/* CTA Secondary Button */
+.ctaSecondary {
+  padding: 16px 32px;
+  background: transparent;
+  border: 2px solid rgba(35, 249, 254, 0.4);
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ctaSecondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(35, 249, 254, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ctaSecondary:hover::before {
+  opacity: 1;
+}
+
+.ctaSecondary:hover {
+  border-color: #23f9fe;
+  box-shadow: 0 0 20px rgba(35, 249, 254, 0.3);
+}
+
+.ctaSecondary a {
+  position: relative;
+  z-index: 1;
+}
+
+/* Stats Container */
+.statsContainer {
+  margin-top: 16px;
+}
+
+.stats {
+  padding: 20px 0;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #23f9fe 0%, #7B2FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: #8a8a9a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.statDivider {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(180deg, transparent, rgba(35, 249, 254, 0.3), transparent);
+}
+
+/* Social Container */
+.socialContainer {
+  margin-top: 16px;
+}
+
+.socialLinks {
+  padding: 16px 0;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(35, 249, 254, 0.2);
+  color: #8a8a9a;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  color: #23f9fe;
+  border-color: #23f9fe;
+  background: rgba(35, 249, 254, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(35, 249, 254, 0.3);
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.scrollLine {
+  width: 2px;
+  height: 60px;
+  background: rgba(35, 249, 254, 0.2);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollDot {
+  width: 4px;
+  height: 12px;
+  background: #23f9fe;
+  border-radius: 2px;
+  position: absolute;
+  left: -1px;
+  top: 0;
+  animation: scrollDown 2s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Decorative Elements */
+.decorativeCircle {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(35, 249, 254, 0.05);
+  right: -150px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.decorativeCircle::before {
+  content: '';
+  position: absolute;
+  inset: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(35, 249, 254, 0.03);
+}
+
+.decorativeCircle::after {
+  content: '';
+  position: absolute;
+  inset: 100px;
+  border-radius: 50%;
+  border: 1px solid rgba(35, 249, 254, 0.02);
+}
+
+.decorativeLine1 {
+  position: absolute;
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(35, 249, 254, 0.3), transparent);
+  top: 30%;
+  right: 10%;
+  transform: rotate(-30deg);
+}
+
+.decorativeLine2 {
+  position: absolute;
+  width: 150px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(123, 47, 255, 0.3), transparent);
+  bottom: 30%;
+  right: 15%;
+  transform: rotate(30deg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .heroInner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .textContainer {
+    max-width: 100%;
+  }
+
+  .avatarFrame {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 3xl !important;
+  }
+
+  .nameLast {
+    display: block;
+  }
+
+  .heroInner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .textContainer {
+    max-width: 100%;
+  }
+
+  .bio {
+    text-align: center;
+  }
+
+  .avatarFrame {
+    width: 180px;
+    height: 180px;
+  }
+
+  .ctaContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .statsContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .statDivider {
+    display: none;
+  }
+
+  .statItem {
+    flex: none;
+    min-width: 120px;
+  }
+
+  .statNumber {
+    font-size: 1.8rem;
+  }
+
+  .statLabel {
+    font-size: 0.7rem;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+
+  .decorativeCircle {
+    display: none;
+  }
+
+  .scrollIndicator {
+    display: none;
+  }
+}

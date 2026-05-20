@@ -1,10 +1,351 @@
-.experienceTabs::-webkit-scrollbar{
-  height: 0.5em;
+/* Experience Section Styles */
+
+/* Section wrapper - full width */
+.experienceSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #121218 0%, #0a0a0f 100%);
+  overflow: hidden;
+  width: 100%;
 }
-.experienceTabs::-webkit-scrollbar-track-piece{
-  height: 10px;
+
+/* Background glow orbs */
+.experienceBg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
-.experienceTabs::-webkit-scrollbar-thumb{
-  background: var(--chakra-colors-gray-600);
-  border-radius: 1em;
+
+.experienceGlow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+
+.experienceGlow1 {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(135deg, #23f9fe, #7B2FFF);
+  right: -50px;
+  top: 10%;
+}
+
+.experienceGlow2 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #7B2FFF, #23f9fe);
+  left: -80px;
+  bottom: 10%;
+}
+
+/* Grid lines */
+.experienceGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(35, 249, 254, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(35, 249, 254, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Content container */
+.experienceContainer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 16px;
+}
+
+@media (min-width: 768px) {
+  .experienceContainer {
+    padding: 80px 24px;
+  }
+}
+
+/* Section label badge */
+.sectionBadge {
+  display: inline-block;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: #23f9fe;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  background: rgba(35, 249, 254, 0.08);
+  border: 1px solid rgba(35, 249, 254, 0.2);
+  border-radius: 4px;
+}
+
+/* Section title */
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.sectionTitle span {
+  background: linear-gradient(90deg, #23f9fe 0%, #00d4ff 50%, #7B2FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Description text */
+.experienceDesc {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #8a8a9a;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.experienceDesc strong,
+.experienceDesc a {
+  color: #23f9fe;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.experienceDesc a:hover {
+  text-shadow: 0 0 20px rgba(35, 249, 254, 0.5);
+}
+
+/* Glass card */
+.experienceCard {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(35, 249, 254, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.experienceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(35, 249, 254, 0.3), transparent);
+}
+
+@media (min-width: 768px) {
+  .experienceCard {
+    padding: 40px;
+  }
+}
+
+/* Desktop tab layout */
+.experienceContent {
+  display: flex;
+  gap: 32px;
+}
+
+@media (max-width: 767px) {
+  .experienceContent {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+/* Tab buttons vertical */
+.tabList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 160px;
+  border-right: 1px solid rgba(35, 249, 254, 0.1);
+  padding-right: 16px;
+}
+
+@media (max-width: 767px) {
+  .tabList {
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid rgba(35, 249, 254, 0.1);
+    padding-right: 0;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    min-width: auto;
+  }
+}
+
+/* Individual tab button */
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  text-align: left;
+  color: #8a8a9a;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.tabBtn:hover {
+  background: rgba(35, 249, 254, 0.05);
+  opacity: 0.8;
+}
+
+.tabBtnActive {
+  background: rgba(35, 249, 254, 0.08);
+  color: #23f9fe;
+  opacity: 1;
+  box-shadow: inset 3px 0 0 #23f9fe;
+}
+
+@media (max-width: 767px) {
+  .tabBtn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .tabBtnActive {
+    box-shadow: inset 0 -3px 0 #23f9fe;
+  }
+}
+
+/* Tab logo */
+.tabLogo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+}
+
+@media (max-width: 767px) {
+  .tabLogo {
+    width: 56px;
+    height: 56px;
+    padding: 6px;
+  }
+}
+
+/* Tab content panel */
+.tabPanel {
+  flex: 1;
+  display: grid;
+  grid-template-areas: 'stack';
+}
+
+.tabPanel > * {
+  grid-area: stack;
+}
+
+/* Role item header */
+.roleHeader {
+  margin-bottom: 16px;
+}
+
+.rolePosition {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.roleCompany {
+  font-size: 1rem;
+  color: #23f9fe;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.roleCompany:hover {
+  text-shadow: 0 0 20px rgba(35, 249, 254, 0.5);
+}
+
+.roleDuration {
+  font-size: 0.8rem;
+  color: #8a8a9a;
+  margin-top: 6px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+/* Role list */
+.roleList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.roleItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  color: #c0c0d0;
+  line-height: 1.6;
+}
+
+.roleItem::before {
+  content: '▹';
+  color: #23f9fe;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* Corner decorations */
+.experienceCorner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
+}
+
+.experienceCornerTopLeft {
+  top: 0;
+  left: 0;
+  border-top: 1px solid rgba(35, 249, 254, 0.1);
+  border-left: 1px solid rgba(35, 249, 254, 0.1);
+}
+
+.experienceCornerBottomRight {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid rgba(35, 249, 254, 0.1);
+  border-right: 1px solid rgba(35, 249, 254, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .experienceCard {
+    padding: 20px;
+  }
 }
