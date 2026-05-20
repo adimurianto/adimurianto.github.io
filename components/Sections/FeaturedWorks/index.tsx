@@ -141,7 +141,7 @@ const ImageLightbox = ({
         />
         <ModalBody p={0} display="flex" flexDirection="column" alignItems="center">
           <Box className={styles.lightboxContainer}>
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               <MotionBox
                 key={currentIndex}
                 className={styles.lightboxImageWrapper}
